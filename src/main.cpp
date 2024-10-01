@@ -3,7 +3,7 @@
 
 #if defined(__clang__)
 #define CC "clang++"
-#elif defined (__GNUC__)
+#elif defined(__GNUC__)
 #define CC "g++"
 #else
 #define CC "<unknown compiler>"
@@ -12,9 +12,8 @@
 int main() {
   std::cout << "Just a test\n";
   std::cout << "Hello World!\n"
-    << "Compiler: " << CC << " " << __VERSION__ << '\n'
-    << "Boost: "
-    << (BOOST_VERSION / 100000) << '.'
-    << (BOOST_VERSION / 100 % 1000) << '.'
-    << (BOOST_VERSION % 100) << '\n';
+            << "Compiler: " << CC << " " << __VERSION__ << '\n'
+            << "Boost: " << (BOOST_VERSION / 100000) << '.'
+            << (BOOST_VERSION / 100 % 1000) << '.' << (BOOST_VERSION % 100)
+            << '\n';
 }
