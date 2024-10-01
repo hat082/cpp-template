@@ -3,7 +3,7 @@ A basic template for cpp development modified from this repo: https://github.com
 
 Usage:
 ```shell
-git clone https://github.com/hat082/cpp-template.git --depth 1 && \
+git clone https://github.com/hat082/cpp-template.git --depth 1 <project name> && \
 cd ./cpp-template
 ```
 
