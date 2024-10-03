@@ -11,26 +11,21 @@
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
-        # devShells.default describes the default shell with C++, cmake, boost,
-        # and catch2
-
         devShells = {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              # C++ Compiler is already part of stdenv
+              gcc
               boost
               catch2
               cmake
-            ];
-          };
-
-          # a shell that works on macOS 
-          clang = pkgs.mkShell.override { stdenv = pkgs.clangStdenv; } {
-            packages = with pkgs; [
-              boost
-              catch2
-              cmake
-            ];
+              # raylib
+            ]; 
+            shellHook = ''
+              # export CPATH=${pkgs.raylib}/include:$CPATH
+              # export LIBRARY_PATH=${pkgs.raylib}/lib:$LIBRARY_PATH
+              export CPATH=${pkgs.gcc}/include:$CPATH   # Add the GCC include paths
+              export LIBRARY_PATH=${pkgs.gcc}/lib:$LIBRARY_PATH   # Add GCC lib paths
+            '';
           };
         };
       };
